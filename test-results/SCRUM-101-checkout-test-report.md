@@ -65,7 +65,9 @@ All other scenarios passed in each browser. The failing tests assert the storyâ€
 - Re-ran the Chromium suite and the complete Chromium/Firefox/WebKit matrix.
 - Confirmed the four remaining failures reproduce in manual testing and across all three engines.
 - No product code was changed, no defect assertion was weakened, and no test was skipped or marked `fixme`.
-- The configured healer agent could not start because its agent metadata requests an unavailable model (`Claude Sonnet 4.6`). Failure triage was completed directly from Playwright traces and the manual observations; no additional test-code healing was appropriate.
+- One intermediate full run had a Firefox browser-context launch timeout while running in parallel. The null-safe failure screenshot hook was verified with an isolated Firefox mobile run, which passed; the final full matrix then completed with only the four expected product defects.
+- The configured planner, generator, and healer agents could not start because their metadata requests an unavailable model (`Claude Sonnet 4.6`). The planner setup/submit/save MCP tools were used for exploration and plan creation; the automation suite was authored directly, and failure triage was completed from Playwright output and manual observations. No additional test-code healing was appropriate.
+- Playwright's generated artifacts are directed to `playwright-output/` so future runs do not erase the requested report in `test-results/`.
 
 ## 4. Defects Log
 

@@ -40,7 +40,7 @@ function installTestHooks() {
   });
 
   test.afterEach(async ({ page }, testInfo) => {
-    if (testInfo.status !== testInfo.expectedStatus && !page.isClosed()) {
+    if (testInfo.status !== testInfo.expectedStatus && page && !page.isClosed()) {
       await page.screenshot({ path: testInfo.outputPath('failure.png'), fullPage: true });
     }
   });
